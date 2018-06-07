@@ -66,6 +66,6 @@
     ]
   },
   "backend": {
-    "imageid": "ozone-docker"
+    "imageid": "docker"
   }
 }
