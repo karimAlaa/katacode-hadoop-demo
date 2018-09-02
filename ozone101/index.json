@@ -62,19 +62,7 @@
   },
   "environment": {
     "uilayout": "terminal",
-    "uimessage1": "",
-    "dashboards": [
-      {
-        "name": "OM web ui",
-        "port": 9874,
-        "host": "host01"
-      },
-      {
-        "name": "SCM web ui",
-        "port": 9876,
-        "host": "host01"
-      }
-    ]
+    "uimessage1": ""
   },
   "backend": {
     "imageid": "docker"
