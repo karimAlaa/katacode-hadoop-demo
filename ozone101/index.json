@@ -52,6 +52,10 @@
         {
           "file": "config",
           "target": "~/"
+        },
+        {
+          "file": "check-scm.sh",
+          "target": "~/"
         }
       ]
     }
