@@ -1,16 +1,16 @@
 version: "3"
 services:
    datanode:
-      image: flokkr/hadoop:katacoda
+      image: flokkr/ozone:katacoda
       command: ["ozone", "datanode"]
       ports:
         - 9864
       env_file:
          - ./config
-   ksm:
-      image: flokkr/hadoop:katacoda
-      hostname: ksm
-      command: ["ozone","ksm"]
+   om:
+      image: flokkr/ozone:katacoda
+      hostname: om
+      command: ["ozone","om"]
       ports:
          - 9874:9874
       env_file:
@@ -20,7 +20,7 @@ services:
          ENSURE_OM_INITIALIZED: /data/metadata/ozoneManager/current/VERSION
    scm:
       hostname: scm
-      image: flokkr/hadoop:katacoda
+      image: flokkr/ozone:katacoda
       command: ["ozone","scm"]
       ports:
          - 9876:9876
