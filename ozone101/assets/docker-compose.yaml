@@ -1,15 +1,5 @@
 version: "3"
 services:
-   namenode:
-      image: flokkr/hadoop:katacoda
-      hostname: namenode
-      command: ["hdfs", "namenode"]
-      ports:
-         - 9870:9870
-      environment:
-          ENSURE_NAMENODE_DIR: /data/namenode
-      env_file:
-         - ./config
    datanode:
       image: flokkr/hadoop:katacoda
       command: ["ozone", "datanode"]
@@ -27,7 +17,7 @@ services:
           - ./config
       environment:
          SLEEP_SECONDS: 10
-         ENSURE_KSM_INITIALIZED: /data/metadata/ksm/current/VERSION
+         ENSURE_OM_INITIALIZED: /data/metadata/ozoneManager/current/VERSION
    scm:
       hostname: scm
       image: flokkr/hadoop:katacoda
