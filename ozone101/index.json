@@ -65,6 +65,6 @@
     "uimessage1": ""
   },
   "backend": {
-    "imageid": "ozone"
+    "imageid": "docker-ozone"
   }
 }
