@@ -1,5 +1,5 @@
 CORE-SITE.XML_fs.defaultFS=hdfs://namenode:9000
-OZONE-SITE.XML_ozone.om.address=ksm
+OZONE-SITE.XML_ozone.om.address=om
 OZONE-SITE.XML_ozone.scm.names=scm
 OZONE-SITE.XML_ozone.enabled=True
 OZONE-SITE.XML_ozone.scm.datanode.id=/data/datanode.id

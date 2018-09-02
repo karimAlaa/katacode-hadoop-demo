@@ -61,12 +61,12 @@
     "uimessage1": "",
     "dashboards": [
       {
-        "name": "KSM web ui",
+        "name": "OM web ui",
         "port": 9874,
         "host": "host01"
       },
       {
-        "name": "OM web ui",
+        "name": "SCM web ui",
         "port": 9876,
         "host": "host01"
       }
