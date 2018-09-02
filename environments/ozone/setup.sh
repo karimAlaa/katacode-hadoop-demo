@@ -1,1 +1,1 @@
-docker pull flokkr/hadoop:katacoda
+docker pull flokkr/ozone:katacoda
