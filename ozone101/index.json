@@ -15,8 +15,7 @@
       },
       {
         "title": "Step 3 - Check the web ui of the SCM server",
-        "text": "step3.md",
-        "verify": "step3-verify.sh"
+        "text": "step3.md"
       },
       {
         "title": "Step 4 - Create a new volume",
