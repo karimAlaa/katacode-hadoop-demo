@@ -55,7 +55,11 @@
         {
           "file": "check-scm.sh",
           "target": "~/"
-        }
+        },
+		  {
+          "file", "VERSION",
+		    "target": "~/"
+		  }
       ]
     }
   },
