@@ -57,7 +57,7 @@
           "target": "~/"
         },
 		  {
-          "file", "VERSION",
+          "file": "VERSION",
 		    "target": "~/"
 		  }
       ]
