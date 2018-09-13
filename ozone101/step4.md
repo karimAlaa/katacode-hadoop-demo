@@ -11,8 +11,8 @@ Let's login to the datanode:
 
 Now you can create the first volume with the oz command
 
-`ozone oz -createVolume http://localhost:9880/hive -user bilbo -quota 100TB -root`{{execute}}
+`ozone oz create volume /hive --user hadoop --quota 100TB --root`{{execute}}
 
 Check if you have the volume:
 
-`ozone oz -listVolume http://localhost:9880/hive -user bilbo`{{execute}}
+`ozone oz volume list --user hadoop`{{execute}}

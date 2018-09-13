@@ -7,8 +7,8 @@ Connect to the datanode (`docker-compose exec datanode bash`) if you are not the
 
 Create the bucket with the ozone command line interface.
 
-`ozone oz -createBucket http://localhost:9880/hive/bb1`{{execute}}
+`ozone oz bucket create /hive/bb1`{{execute}}
 
 And list the existing buckets in a volume:
 
-`ozone oz -listBucket http://localhost:9880/hive/`{{execute}}
+`ozone oz bucket list /hive`{{execute}}
