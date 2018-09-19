@@ -6,6 +6,6 @@ Connect to the datanode (`docker-compose exec datanode bash`) if you are not the
 
 Upload a file to the bucket.
 
-`ozone oz key put --replication ONE /hive/bb1/LICENSE.txt /opt/hadoop/LICENSE.txt`{{execute}}
+`ozone sh key put --replication ONE /hive/bb1/LICENSE.txt /opt/hadoop/LICENSE.txt`{{execute}}
 
-`ozone oz key list /hive/bb1/`{{execute}}
+`ozone sh key list /hive/bb1/`{{execute}}
