@@ -1,0 +1,52 @@
+version: '2.0'
+services:
+  dn1:
+    build:
+      context: '.'
+      dockerfile: 'Dockerfile.hadoop'
+    image: "hadoop:latest"
+    hostname: "dn1"
+    container_name: "dn1"
+    stdin_open: true
+  dn2:
+    build:
+      context: '.'
+      dockerfile: 'Dockerfile.hadoop'
+    image: "hadoop:latest"
+    hostname: "dn2"
+    container_name: "dn2"
+    stdin_open: true
+  cl1:
+    build:
+      context: '.'
+      dockerfile: 'Dockerfile.hadoop'
+    image: "hadoop:latest"
+    volumes:
+      - ./data:/root/data
+    hostname: "cl1"
+    container_name: "cl1"
+    stdin_open: true
+  hive:
+    build:
+      context: '.'
+      dockerfile: 'Dockerfile.hive'
+    image: "hive:latest"
+    hostname: "hive"
+    container_name: "hive"
+    stdin_open: true
+  nn:
+    build:
+      context: '.'
+      dockerfile: 'Dockerfile.hadoop'
+    image: "hadoop:latest"
+    hostname: "nn"
+    container_name: "nn"
+    stdin_open: true
+    ports:
+      - "50070:50070"
+      - "8088:8088"
+    environment:
+      - "is_namenode=true"
+    depends_on:
+      - 'dn1'
+      - 'dn2'

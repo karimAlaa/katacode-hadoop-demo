@@ -1,0 +1,58 @@
+FROM ubuntu:xenial
+
+USER root
+
+RUN apt-get update && \
+  apt-get install -y --no-install-recommends \
+  wget \
+  nano \
+  ssh \
+  rsync \
+  openjdk-8-jdk
+
+RUN ssh-keygen -t rsa -P '' -f /root/.ssh/id_rsa
+RUN cat /root/.ssh/id_rsa.pub >> /root/.ssh/authorized_keys
+RUN chmod 0600 /root/.ssh/authorized_keys
+
+RUN wget http://www-eu.apache.org/dist/hadoop/common/hadoop-2.9.1/hadoop-2.9.1.tar.gz -O  /usr/local/hadoop-2.9.1.tar.gz
+RUN tar xfz /usr/local/hadoop-2.9.1.tar.gz -C /usr/local/hadoop
+
+# ADD hadoop-2.9.1.tar.gz /usr/local
+# RUN mv /usr/local/hadoop-2.9.1 /usr/local/hadoop
+
+ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
+ENV HADOOP_HOME /usr/local/hadoop
+ENV HADOOP_PREFIX /usr/local/hadoop
+ENV HADOOP_CONF_DIR $HADOOP_HOME/etc/hadoop
+ENV HADOOP_INSTALL $HADOOP_HOME
+ENV HADOOP_MAPRED_HOME $HADOOP_HOME
+ENV HADOOP_COMMON_HOME $HADOOP_HOME
+ENV HADOOP_HDFS_HOME $HADOOP_HOME
+ENV YARN_HOME $HADOOP_HOME
+ENV YARN_CONF_DIR $HADOOP_HOME/etc/hadoop
+ENV HADOOP_YARN_HOME $HADOOP_HOME
+ENV HADOOP_COMMON_LIB_NATIVE_DIR $HADOOP_HOME/lib/native
+ENV LD_LIBRARY_PATH $HADOOP_HOME/lib/native/:$LD_LIBRARY_PATH
+ENV PATH $PATH:$JAVA_HOME/bin:$HADOOP_HOME/sbin:$HADOOP_HOME/bin
+
+COPY conf/hadoop-env.sh /usr/local/hadoop/etc/hadoop/hadoop-env.sh
+COPY conf/core-site.xml /usr/local/hadoop/etc/hadoop/core-site.xml
+COPY conf/hdfs-site.xml /usr/local/hadoop/etc/hadoop/hdfs-site.xml
+COPY conf/mapred-site.xml /usr/local/hadoop/etc/hadoop/mapred-site.xml
+COPY conf/yarn-site.xml /usr/local/hadoop/etc/hadoop/yarn-site.xml
+COPY conf/slaves /usr/local/hadoop/etc/hadoop/slaves
+
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+RUN mkdir /user
+RUN useradd -c 'Hadoop User' -md /user/hadoop -s /bin/bash -p hadoop hadoop
+RUN useradd -c 'Training User' -md /user/training -s /bin/bash -p training training
+
+RUN echo "export PATH=${PATH}" >> /root/.bashrc
+RUN echo "export PATH=${PATH}" >> /user/hadoop/.bashrc
+RUN echo "export PATH=${PATH}" >> /user/training/.bashrc
+
+ENTRYPOINT ["/entrypoint.sh"]
+
+CMD ["/bin/bash"]

@@ -1,6 +1,6 @@
 {
   "title": "Getting Started with ozone",
-  "description": "Start an Ozone cluster with docker-compose",
+  "description": "Start an Hadoop cluster with docker-compose",
   "difficulty": "beginner",
   "time": "10 minutes",
   "details": {
@@ -49,23 +49,27 @@
           "target": "~/"
         },
         {
-          "file": "config",
+          "file": "conf/*",
+          "target": "~/conf"
+        },
+        {
+          "file": "Dockerfile.hadoop",
           "target": "~/"
         },
         {
-          "file": "check-scm.sh",
+          "file": "Dockerfile.hive",
           "target": "~/"
         },
-		  {
-          "file": "VERSION",
-		    "target": "~/"
-		  }
+        {
+          "file": "entrypoint.sh",
+          "target": "~/"
+        }
       ]
     }
   },
   "environment": {
     "uilayout": "terminal",
-    "uimessage1": ""
+    "uimessage1": "Hello World"
   },
   "backend": {
     "imageid": "docker"
